@@ -35,6 +35,7 @@ const SelectPerson = ({ control, name }: any) => {
   const referenceElement = useMemo(
     () => (
       <div
+        id="select-flight-category"
         className="bg-main-gray-background h-full block p-1 cursor-pointer"
         onClick={() => setVisible(true)}
       >
@@ -60,6 +61,7 @@ const SelectPerson = ({ control, name }: any) => {
             value="economy"
             label="Economy Class"
             className="text-main-gray-primary font-semibold"
+            customInputCss="flight-category"
           />
           <Radio
             name="passengerType"
@@ -67,6 +69,7 @@ const SelectPerson = ({ control, name }: any) => {
             value="bussiness"
             label="Bussiness Class"
             className="text-main-gray-primary font-semibold"
+            customInputCss="flight-category"
           />
         </div>
         <div className="flex justify-between mt-6 items-center">
@@ -80,6 +83,7 @@ const SelectPerson = ({ control, name }: any) => {
             />
             <span>{peopleCount}</span>
             <Button
+              id="increment-people-count"
               text="+"
               className="border-0 rounded-md bg-main-gray-secondary px-3 py-1"
               onClick={() => onPeopleCountButtonClick("increment")}

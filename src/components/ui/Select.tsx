@@ -11,11 +11,21 @@ export interface SelectProps extends React.HTMLAttributes<HTMLElement> {
   placeholder: string;
   icon?: ReactElement<any, any>;
   optionIcon?: ReactElement<any, any>;
+  id?: string;
 }
 
 const Select = React.forwardRef<HTMLElement, SelectProps>(
   (
-    { options = [], className, placeholder, icon, optionIcon, control, name },
+    {
+      options = [],
+      className,
+      placeholder,
+      icon,
+      optionIcon,
+      control,
+      name,
+      id,
+    },
     ref
   ) => {
     const { field } = useController({ control, name });
@@ -49,6 +59,7 @@ const Select = React.forwardRef<HTMLElement, SelectProps>(
           {icon && <div className="mx-2">{icon}</div>}
 
           <input
+            id={id}
             name={name}
             type="text"
             className="focus:outline-none"
@@ -75,7 +86,7 @@ const Select = React.forwardRef<HTMLElement, SelectProps>(
             filteredOptions.map((item: any) => (
               <div
                 key={item.value}
-                className="flex hover:bg-main-blue-background hover:cursor-pointer py-1 px-1 hover:rounded-md"
+                className="select-option flex hover:bg-main-blue-background hover:cursor-pointer py-1 px-1 hover:rounded-md"
                 onClick={() => onSelectOption(item)}
               >
                 {optionIcon && <div className="mx-2">{optionIcon}</div>}

@@ -7,6 +7,7 @@ import { useIcons } from "../icons/use-icons";
 import SelectPerson from "./SelectPerson";
 import Select from "../ui/Select";
 import ErrorModal from "./ErrorModal";
+import { Button } from "../ui/Button";
 
 interface IFormInput {
   from: string;
@@ -93,6 +94,7 @@ const FlightSelection = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mobile:flex mobile:flex-col tablet:flex tablet:flex-row p-6 bg-main-blue-secondary gap-2">
             <Select
+              id="from"
               name="from"
               control={control}
               options={originAirports}
@@ -105,6 +107,7 @@ const FlightSelection = () => {
               optionIcon={<WorldIcon />}
             />
             <Select
+              id="to"
               name="to"
               control={control}
               options={destinationAirports}
@@ -122,9 +125,16 @@ const FlightSelection = () => {
             </div>
             <SelectPerson control={control} name="peopleCount" />
             <div className="flex">
-              <button type="submit" className="bg-main-red-primary px-4">
+              {/* <button type="submit" className="bg-main-red-primary px-4">
                 <ArrowIcon />
-              </button>
+              </button> */}
+              <Button
+                id="submit"
+                className="bg-main-red-primary px-4"
+                type="submit"
+              >
+                <ArrowIcon />
+              </Button>
             </div>
           </div>
         </form>

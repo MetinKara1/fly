@@ -59,6 +59,7 @@ const FlightDetail = React.forwardRef<HTMLElement, FlightDetailProps>(
             })}
           </div>
           <Button
+            id="choose-flight"
             text="Uçuşu Seç"
             className={cn(
               "flex justify-center border-t bg-main-red-primary text-white py-2",

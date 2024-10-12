@@ -3,6 +3,7 @@ import React, { useState } from "react";
 interface SwitchProps {
   appliedPromotion: boolean;
   setAppliedPromotion: any;
+  id?: string;
 }
 
 const Switch = (props: SwitchProps) => {
@@ -16,6 +17,7 @@ const Switch = (props: SwitchProps) => {
   return (
     <label className="relative inline-block w-16 h-8 border-0 rounded-xl">
       <input
+        id={props.id}
         type="checkbox"
         className="opacity-0 w-0 h-0"
         checked={isChecked}

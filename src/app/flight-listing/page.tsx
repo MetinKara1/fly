@@ -30,6 +30,7 @@ const FlightListing = () => {
           <div className="flex items-center gap-3 mb-3">
             <p className="text-md font-bold">Promosyon Kodu</p>
             <Switch
+              id="applied-promotion"
               appliedPromotion={appliedPromotion}
               setAppliedPromotion={setAppliedPromotion}
             />
