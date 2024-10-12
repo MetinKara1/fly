@@ -1,4 +1,5 @@
 "use client";
+import { FlightContentModels } from "@/models/model";
 import { cn } from "@/utils/tailwind-merge";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -8,7 +9,7 @@ import { Button } from "../ui/Button";
 const Content = () => {
   const { OkIcon, NotOkIcon } = useIcons();
   const router = useRouter();
-  const [flightData, setFlightData] = useState<any>({
+  const [flightData, setFlightData] = useState<FlightContentModels>({
     status: "ERROR",
     price: 0,
     currency: "TRY",

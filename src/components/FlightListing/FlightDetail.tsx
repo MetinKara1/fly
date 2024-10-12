@@ -7,7 +7,7 @@ interface FlightDetailProps {
   title: string;
   currency: string;
   price: number;
-  detail: any;
+  detail: string[];
   appliedPromotion: boolean;
   status: "AVAILABLE" | "ERROR";
 }
@@ -54,7 +54,7 @@ const FlightDetail = React.forwardRef<HTMLElement, FlightDetailProps>(
         </div>
         <div className="flex flex-col justify-between border h-[200px] max-h-[200px]">
           <div className="flex flex-col">
-            {detail.map((item: any) => {
+            {detail.map((item: string) => {
               return <p className="border-b px-2 py-1">{item}</p>;
             })}
           </div>

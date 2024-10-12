@@ -83,7 +83,7 @@ const Select = React.forwardRef<HTMLElement, SelectProps>(
             onChange={(e) => setSearchTerm(e.target.value)}
           />
           {filteredOptions.length > 0 ? (
-            filteredOptions.map((item: any) => (
+            filteredOptions.map((item: { value: string; label: string }) => (
               <div
                 key={item.value}
                 className="select-option flex hover:bg-main-blue-background hover:cursor-pointer py-1 px-1 hover:rounded-md"

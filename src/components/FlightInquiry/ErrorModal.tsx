@@ -8,7 +8,7 @@ import Modal from "../ui/Modal";
 interface ErrorModalProps {
   content: string;
   visible: boolean;
-  setVisible: any;
+  setVisible: (visible: boolean) => void;
 }
 
 const ErrorModal = (props: ErrorModalProps) => {

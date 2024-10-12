@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 interface SwitchProps {
   appliedPromotion: boolean;
-  setAppliedPromotion: any;
+  setAppliedPromotion: (applied: boolean) => void;
   id?: string;
 }
 

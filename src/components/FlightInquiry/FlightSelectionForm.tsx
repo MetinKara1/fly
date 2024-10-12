@@ -8,6 +8,7 @@ import Select from "../ui/Select";
 import { Button } from "../ui/Button";
 import { useIcons } from "../icons/use-icons";
 import ErrorModal from "./ErrorModal";
+import { Flight } from "@/models/model";
 
 interface IFormInput {
   from: string;
@@ -29,8 +30,12 @@ const FlightSelectionForm = () => {
   });
   const [errorContent, setErrorContent] = useState<string>("");
   const [visible, setVisible] = useState(false);
-  const [originAirports, setOriginAirports] = useState<any>([]);
-  const [destinationAirports, setDestinationAirports] = useState<any>([]);
+  const [originAirports, setOriginAirports] = useState<
+    { value: string; label: string }[]
+  >([]);
+  const [destinationAirports, setDestinationAirports] = useState<
+    { value: string; label: string }[]
+  >([]);
 
   useEffect(() => {
     fetch("/api/flights").then(async (res) => {
@@ -47,17 +52,19 @@ const FlightSelectionForm = () => {
       );
       setOriginAirports(_.uniqBy(airports, "value"));
 
-      let destinatinations = data.map((item: any) => {
-        return {
-          value: item.destinationAirport.code,
-          label: item.destinationAirport.name,
-        };
-      });
+      let destinatinations: { value: string; label: string }[] = data.map(
+        (item: Flight) => {
+          return {
+            value: item.destinationAirport.code,
+            label: item.destinationAirport.name,
+          };
+        }
+      );
       setDestinationAirports(_.uniqBy(destinatinations, "value"));
     });
   }, []);
 
-  const onSubmit: SubmitHandler<IFormInput> = (data: any) => {
+  const onSubmit: SubmitHandler<IFormInput> = (data: IFormInput) => {
     if (!data.from) {
       setVisible(true);
       setErrorContent("Lütfen bir kalkış noktası seçin");
@@ -68,7 +75,7 @@ const FlightSelectionForm = () => {
       setErrorContent("Lütfen bir varış noktası seçin");
       return;
     }
-    if (data.passengerType <= 0) {
+    if (!data.passengerType) {
       setVisible(true);
       setErrorContent("Lütfen uçuş tipi seçin");
       return;

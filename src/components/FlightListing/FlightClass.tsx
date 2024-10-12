@@ -1,13 +1,14 @@
 "use client";
-import React, { useState } from "react";
+import { SubCategory } from "@/models/model";
+import React from "react";
 import { useIcons } from "../icons/use-icons";
 import { Radio } from "../ui/Radio";
 
 interface FlightClassProps {
   flightClass: string;
-  selectedFlightCategory: any;
-  setSelectedFlightCategory: any;
-  flightCategory: any;
+  selectedFlightCategory: string;
+  setSelectedFlightCategory: (selected: string) => void;
+  flightCategory: SubCategory[];
 }
 
 const FlightClass = React.forwardRef<HTMLElement, FlightClassProps>(
@@ -17,7 +18,6 @@ const FlightClass = React.forwardRef<HTMLElement, FlightClassProps>(
       selectedFlightCategory,
       setSelectedFlightCategory,
       flightCategory,
-      ...rest
     },
     ref
   ) => {

@@ -1,4 +1,6 @@
-export function flightsSortByEco(data: any) {
+import { FareCategory, Flight, SubCategory } from "@/models/model";
+
+export function flightsSortByEco(data: Flight[]) {
     let flightsCopy = [...data];
     const sortedFlights = flightsCopy.sort((a: any, b: any) => {
       const aPrice = a.fareCategories?.ECONOMY?.subcategories[0]?.price.amount;
@@ -10,7 +12,7 @@ export function flightsSortByEco(data: any) {
     return sortedFlights;
   }
 
-export function flightsSortByDepartureTime(data: any) {
+export function flightsSortByDepartureTime(data: Flight[]) {
     const copyData = [...data];
     const sortedFlights = copyData.sort((a: any, b: any) => {
       const parseTime = (time: string) => {
@@ -28,15 +30,15 @@ export function flightsSortByDepartureTime(data: any) {
     return sortedFlights;
   }
 
-export function appliedPromotionFlights(flights: any) {
+export function appliedPromotionFlights(flights: Flight[]) {
   let copyFlightsData = [...flights];
 
-  return copyFlightsData.map((flight: any) => {
-    const applyDiscountToEcoFly = (fareCategory: any) => {
+  return copyFlightsData.map((flight: Flight) => {
+    const applyDiscountToEcoFly = (fareCategory: FareCategory) => {
       if (!fareCategory) return null;
 
       const updatedSubcategories = fareCategory.subcategories.map(
-        (subcategory: any) => {
+        (subcategory: SubCategory) => {
           if (subcategory.brandCode === "ecoFly") {
             return {
               ...subcategory,
