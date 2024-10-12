@@ -22,12 +22,17 @@ const config: Config = {
         },
         "main-blue": {
           primary: "#063048",
-          secondary: "#60697799"
+          secondary: "#60697799",
+          background: "#3685e7",
         },
         "main-gray": {
           primary: "#a7a7a7",
           secondary: "#eaeeef",
-          background: "#242a38"
+          third: "#f4f5f9",
+          background: "#242a38",
+        },
+        "main-black": {
+          primary: "#242a38"
         }
       },
     },

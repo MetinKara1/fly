@@ -5,10 +5,12 @@ import FlightSelection from "@/components/FlightInquiry/FlightSelection";
 
 const FlightInquiry = () => {
   return (
-    <MainContainer>
-      <Header />
-      <FlightSelection />
-    </MainContainer>
+    <div className="absolute w-full h-[100vh] bg-main-blue-primary">
+      <MainContainer>
+        <Header mode="dark" />
+        <FlightSelection />
+      </MainContainer>
+    </div>
   );
 };
 

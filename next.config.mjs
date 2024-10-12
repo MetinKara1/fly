@@ -15,6 +15,14 @@ const nextConfig = {
         source: "/ucus-listeleme",
         destination: "/flight-listing",
       },
+      {
+        source: "/kabin-secimi-tamamlandi",
+        destination: "/cabin-selection",
+      },
+      {
+        source: "/kabin-secimi-tamamlanamadi",
+        destination: "/cabin-selection",
+      },
     ];
   },
 };

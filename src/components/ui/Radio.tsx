@@ -5,13 +5,14 @@ export interface RadioProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   text?: string;
   className?: string;
+  checked: boolean;
 }
 
 const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
-  ({ text, className }, ref) => {
+  ({ checked, text, className }, ref) => {
     return (
       <div ref={ref} className={cn("flex", className)}>
-        <input type="radio" />
+        <input type="radio" checked={checked} />
         <label className="pl-1 text-sm">{text}</label>
       </div>
     );

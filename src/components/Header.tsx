@@ -1,10 +1,20 @@
 import React from "react";
 import Link from "next/link";
 import Input from "./ui/Input";
+import { cn } from "@/utils/tailwind-merge";
 
-const Header = () => {
+interface HeaderProps {
+  mode?: "default" | "dark";
+}
+
+const Header: React.FC<HeaderProps> = ({ mode = "default" }) => {
   return (
-    <div className="w-full flex justify-between text-white border-b mt-6">
+    <div
+      className={cn(
+        "w-full flex justify-between border-b mt-6",
+        mode === "dark" && "text-white"
+      )}
+    >
       <Link href="https://turkishairlines.com" className="font-bold">
         turkishairlines.com
       </Link>
@@ -12,7 +22,7 @@ const Header = () => {
         <div>
           <Input
             text="search"
-            customInputCss="bg-main-blue-primary text-white"
+            customInputCss={cn(mode === "dark" && "bg-main-blue-primary")}
             placeholder="search"
           />
         </div>

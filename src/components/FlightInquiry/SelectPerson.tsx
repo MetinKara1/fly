@@ -1,27 +1,30 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useController } from "react-hook-form";
 import { useIcons } from "../icons/use-icons";
 import { Button } from "../ui/Button";
 import { Popper } from "../ui/Popper";
-import { Radio } from "../ui/Radio";
+import Radio from "../ui/FormElements/Radio";
 
-const SelectPerson = () => {
+const SelectPerson = ({ control, name }: any) => {
   const { UserIcon, UsersIcon } = useIcons();
+  const { field } = useController({ control, name });
   const [visible, setVisible] = useState(false);
-  const [peopleCount, setPeopleCount] = useState(1);
-  const [mouseEvent, setMouseEvent] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (mouseEvent) setVisible(true);
-  }, [mouseEvent]);
+  const [peopleCount, setPeopleCount] = useState(0);
 
   const onPeopleCountButtonClick = (type: string) => {
     switch (type) {
       case "increment":
-        setPeopleCount(peopleCount + 1);
+        let count = peopleCount + 1;
+        setPeopleCount(count);
+        field.onChange(count);
         break;
 
       case "decrement":
-        if (peopleCount !== 0) setPeopleCount(peopleCount - 1);
+        if (peopleCount !== 0) {
+          let count = peopleCount - 1;
+          setPeopleCount(count);
+          field.onChange(count);
+        }
         break;
 
       default:
@@ -32,14 +35,13 @@ const SelectPerson = () => {
   const referenceElement = useMemo(
     () => (
       <div
-        className="bg-main-gray-background h-full flex"
-        onMouseEnter={() => setMouseEvent(true)}
-        onMouseLeave={() => setMouseEvent(false)}
+        className="bg-main-gray-background h-full block p-1 cursor-pointer"
+        onClick={() => setVisible(true)}
       >
+        <p className="flex justify-end text-white pr-1">{peopleCount}</p>
         <div className="flex jusfiyt-center items-center px-8">
           {peopleCount > 1 ? <UsersIcon /> : <UserIcon />}
         </div>
-        <p className="flex justify-end text-white pr-1">{peopleCount}</p>
       </div>
     ),
     [peopleCount]
@@ -47,17 +49,23 @@ const SelectPerson = () => {
 
   const popperElement = useMemo(
     () => (
-      <div className="bg-white p-4">
+      <div className="bg-white p-4 border-0 rounded-md mt-1">
         <h1 className="mb-4 font-bold text-main-gray-primary">
           Kabin ve yolcu seçimi
         </h1>
         <div className="flex justify-center items-center gap-4">
           <Radio
-            text="Economy Class"
+            name="passengerType"
+            control={control}
+            value="economy"
+            label="Economy Class"
             className="text-main-gray-primary font-semibold"
           />
           <Radio
-            text="Bussiness Class"
+            name="passengerType"
+            control={control}
+            value="bussiness"
+            label="Bussiness Class"
             className="text-main-gray-primary font-semibold"
           />
         </div>
@@ -68,12 +76,14 @@ const SelectPerson = () => {
               text="-"
               className="border-0 rounded-md bg-main-gray-secondary px-3 py-1"
               onClick={() => onPeopleCountButtonClick("decrement")}
+              type="button"
             />
             <span>{peopleCount}</span>
             <Button
               text="+"
               className="border-0 rounded-md bg-main-gray-secondary px-3 py-1"
               onClick={() => onPeopleCountButtonClick("increment")}
+              type="button"
             />
           </div>
         </div>
@@ -88,7 +98,6 @@ const SelectPerson = () => {
       setVisible={setVisible}
       referenceElement={referenceElement}
       popperElement={popperElement}
-      arrowEnabled
     />
   );
 };

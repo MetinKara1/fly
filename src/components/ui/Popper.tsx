@@ -30,15 +30,8 @@ export const Popper: React.FC<Props> = (props) => {
     props.setVisible(false);
   });
 
-  //   const referenceElement = () => {
-  //     return <div></div>;
-  //   };
-  //   const popperElement = () => {
-  //     return <div></div>;
-  //   };
   const { styles, attributes } = usePopper(referenceElement, popperElement, {
     placement: props.placement || "bottom-start",
-    // modifiers,
   });
 
   const popper = props.visible && (
@@ -69,7 +62,7 @@ export const Popper: React.FC<Props> = (props) => {
   );
 
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} className="w-full h-full">
       <div ref={setReferenceElement} className="w-full h-full">
         {props.referenceElement}
       </div>
