@@ -24,6 +24,8 @@ export function flightsSortByDepartureTime(data: any) {
 
       return departureA.getTime() - departureB.getTime();
     });
+
+    return sortedFlights;
   }
 
 export function appliedPromotionFlights(flights: any) {
