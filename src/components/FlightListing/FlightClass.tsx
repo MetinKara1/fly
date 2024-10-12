@@ -27,7 +27,9 @@ const FlightClass = React.forwardRef<HTMLElement, FlightClassProps>(
       <div
         className="relative flex justify-center items-center bg-white p-4 gap-6"
         onClick={() => {
-          setSelectedFlightCategory(flightClass);
+          if (flightClass === selectedFlightCategory)
+            setSelectedFlightCategory("");
+          else setSelectedFlightCategory(flightClass);
         }}
       >
         <div>
