@@ -3,16 +3,22 @@ import React from "react";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  id?: string;
   text?: string;
   className?: string;
   type?: "button" | "submit" | "reset" | undefined;
   disabled?: boolean;
+  children?: React.ReactNode;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ text, className, type = "submit", disabled, ...rest }, ref) => {
+  (
+    { id, text, className, type = "submit", disabled, children, ...rest },
+    ref
+  ) => {
     return (
       <button
+        id={id}
         ref={ref}
         className={cn(className)}
         disabled={disabled}
@@ -20,6 +26,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...rest}
       >
         {text}
+        {children}
       </button>
     );
   }

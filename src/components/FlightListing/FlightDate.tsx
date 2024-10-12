@@ -1,7 +1,8 @@
+import { Flight } from "@/models/model";
 import React from "react";
 
 interface FlightDateProps {
-  details: any;
+  details: Flight;
 }
 
 const FlightDate = (props: FlightDateProps) => {

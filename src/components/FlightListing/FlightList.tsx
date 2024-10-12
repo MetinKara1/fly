@@ -5,13 +5,14 @@ import {
   flightsSortByDepartureTime,
   flightsSortByEco,
 } from "@/utils/helpers";
+import { Flight } from "@/models/model";
 
 interface FlightListProps {
   appliedPromotion: boolean;
 }
 
 const FlightList = (props: FlightListProps) => {
-  const [flights, setFlights] = useState<any>([]);
+  const [flights, setFlights] = useState<Flight[]>([]);
 
   useEffect(() => {
     let storeFlights = localStorage.getItem("flights");
@@ -58,10 +59,10 @@ const FlightList = (props: FlightListProps) => {
         </div>
       </div>
       {(props.appliedPromotion ? memoizedFlights : flights)?.map(
-        (item: any) => {
+        (item: Flight, index: number) => {
           return (
             <FlightListCard
-              key={item}
+              key={index}
               cardItem={item}
               appliedPromotion={props.appliedPromotion}
             />

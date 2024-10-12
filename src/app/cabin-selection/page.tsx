@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Content from "@/components/CabinSelection/Content";
 import Header from "@/components/Header";

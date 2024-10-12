@@ -7,6 +7,7 @@ interface Props {
   control: any;
   value?: string;
   label?: string;
+  id?: string;
   customInputCss?: string;
   className?: string;
 }
@@ -17,6 +18,7 @@ const Radio = ({
   control,
   value,
   label,
+  id,
   className,
 }: Props) => {
   const { field } = useController({ control, name });
@@ -24,6 +26,7 @@ const Radio = ({
   return (
     <div className={cn("flex items-center", className)}>
       <input
+        id={id}
         type="radio"
         className={cn("focus:outline-none px-2", customInputCss)}
         {...field}

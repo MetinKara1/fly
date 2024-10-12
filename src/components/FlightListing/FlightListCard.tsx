@@ -1,3 +1,4 @@
+import { SubCategory } from "@/models/model";
 import React, { useState } from "react";
 import FlightClass from "./FlightClass";
 import FlightDate from "./FlightDate";
@@ -9,7 +10,8 @@ interface FlightListCardProps {
 }
 
 const FlightListCard = (props: FlightListCardProps) => {
-  const [selectedFlightCategory, setSelectedFlightCategory] = useState(null);
+  const [selectedFlightCategory, setSelectedFlightCategory] =
+    useState<string>("");
 
   return (
     <div>
@@ -33,7 +35,7 @@ const FlightListCard = (props: FlightListCardProps) => {
           <div className="flex w-full bg-white gap-4 p-4">
             {props.cardItem.fareCategories[
               selectedFlightCategory
-            ].subcategories?.map((item: any) => {
+            ].subcategories?.map((item: SubCategory) => {
               return (
                 <FlightDetail
                   title={item.brandCode}
