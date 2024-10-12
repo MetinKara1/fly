@@ -2,6 +2,8 @@
 describe("Flight-Inquiry", () => {
     it("should navigate to the about page", () => {
       cy.visit("http://localhost:3000");
+
+      cy.wait(2000);
   
       cy.get('#from').click();
 
