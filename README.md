@@ -3,8 +3,8 @@ Merhaba
 Projeyi ayağa kaldırmak için gerekli sistem gereksinimleri şu şekilde:
 
 - node version 19 ve üzeri sürümler
-- yarn version 1.22.17
-- npm version 10 ve üzeri
+- yarn version 1.22.17 ve üzeri sürümler
+- npm version 10 ve üzeri sürümler
 
 * Yarn
 

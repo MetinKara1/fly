@@ -5,7 +5,6 @@ describe("Flight-Selection", () => {
 
       cy.wait(2000);
 
-      // Find a link with an href attribute containing "about" and click it
       cy.get('input[type*="radio"]').first().click();
 
       cy.get("#choose-flight").click();

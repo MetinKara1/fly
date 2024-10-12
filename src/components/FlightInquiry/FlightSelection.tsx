@@ -125,9 +125,6 @@ const FlightSelection = () => {
             </div>
             <SelectPerson control={control} name="peopleCount" />
             <div className="flex">
-              {/* <button type="submit" className="bg-main-red-primary px-4">
-                <ArrowIcon />
-              </button> */}
               <Button
                 id="submit"
                 className="bg-main-red-primary px-4"
